@@ -14,7 +14,8 @@ repositories {
 }
 
 android {
-    compileSdkVersion 34
+    namespace 'ru.iteco.fmhandroid'
+    compileSdkVersion 32
     buildToolsVersion "30.0.3"
 
     testOptions {
@@ -24,7 +25,7 @@ android {
     defaultConfig {
         applicationId "ru.iteco.fmhandroid"
         minSdkVersion 21
-        targetSdkVersion 34
+        targetSdkVersion 32
         versionCode 14
         versionName "1.0.0"
         testInstrumentationRunner "io.qameta.allure.android.runners.AllureAndroidJUnitRunner"
