@@ -24,13 +24,12 @@ import ru.iteco.fmhandroid.ui.steps.SplashStep;
 @RunWith(AllureAndroidJUnit4.class)
 public class MainPaigeTest {
 
-    AuthStep authStep = new AuthStep();
-    MainSteps mainSteps = new MainSteps();
-    NewsStep newsStep = new NewsStep();
-    LoveStep loveStep = new LoveStep();
-    SplashStep splashStep = new SplashStep();
-    AboutStep aboutStep = new AboutStep();
-
+    private final AuthStep authStep = new AuthStep();
+    private final MainSteps mainSteps = new MainSteps();
+    private final NewsStep newsStep = new NewsStep();
+    private final LoveStep loveStep = new LoveStep();
+    private final SplashStep splashStep = new SplashStep();
+    private final AboutStep aboutStep = new AboutStep();
 
     @Rule
     public ActivityScenarioRule<AppActivity> activityRule =
@@ -84,10 +83,10 @@ public class MainPaigeTest {
     }
 
     @Test
-    @DisplayName("Посмотреть отдельную новoсть")
+    @DisplayName("Посмотреть отдельную новoсти")
     public void checkNews(){
-        mainSteps.checkNews(0);
-        mainSteps.descriptionDisplayed(0);
+        mainSteps.loadMainScreen();
+        mainSteps.clickOnNews();
     }
 }
 

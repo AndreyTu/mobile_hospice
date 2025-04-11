@@ -1,15 +1,15 @@
 package ru.iteco.fmhandroid.ui.steps;
 
-
 import static ru.iteco.fmhandroid.ui.data.Helper.elementWaiting;
-import static ru.iteco.fmhandroid.ui.screenElement.SplashElement.getSplashscreenImage;
 
 import io.qameta.allure.kotlin.Allure;
+import ru.iteco.fmhandroid.ui.screenElement.SplashElement;
 
 public class SplashStep {
+    private final SplashElement splashElement = new SplashElement();
 
     public void appDownload(){
         Allure.step("Загрузка приложения");
-        elementWaiting(getSplashscreenImage(), 5000);
+        elementWaiting(splashElement.getSplashscreenImage(), 5000);
     }
 }

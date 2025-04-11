@@ -9,52 +9,45 @@ import static ru.iteco.fmhandroid.ui.data.Helper.emptyPassword;
 import static ru.iteco.fmhandroid.ui.data.Helper.invalidAuthData;
 import static ru.iteco.fmhandroid.ui.data.Helper.invalidLoginData;
 import static ru.iteco.fmhandroid.ui.data.Helper.invalidPassData;
-import static ru.iteco.fmhandroid.ui.screenElement.AuthElement.loginText;
-import static ru.iteco.fmhandroid.ui.screenElement.AuthElement.nameAuthText;
-
-import static ru.iteco.fmhandroid.ui.screenElement.AuthElement.passwordText;
-
-import static ru.iteco.fmhandroid.ui.screenElement.AuthElement.signInButton;
 
 import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.ui.data.Helper;
+import ru.iteco.fmhandroid.ui.screenElement.AuthElement;
 
 public class AuthStep {
+    private final AuthElement authElement = new AuthElement();
 
     public void checkAuthScreenElements() {
         Allure.step("Элементы экрана авторизации");
-        nameAuthText.check(matches(isDisplayed()));
-        loginText.check(matches(isDisplayed()));
-        passwordText.check(matches(isDisplayed()));
-        signInButton.check(matches(isDisplayed()));
+        authElement.getNameAuthText().check(matches(isDisplayed()));
+        authElement.getLoginText().check(matches(isDisplayed()));
+        authElement.getPasswordText().check(matches(isDisplayed()));
+        authElement.getSignInButton().check(matches(isDisplayed()));
     }
 
     public void authWithValidLoginAndPass(Helper.User info) {
         Allure.step("Авторизация с валидным логином и паролем");
         checkAuthScreenElements();
-        loginText.perform(replaceText(info.getLogin()));
-        passwordText.perform(replaceText(info.getPass()));
+        authElement.getLoginText().perform(replaceText(info.getLogin()));
+        authElement.getPasswordText().perform(replaceText(info.getPass()));
     }
 
     public void authWithInvalidLoginAndPass(Helper.User info) {
         Allure.step("Авторизация с невалидными логином и паролем");
         checkAuthScreenElements();
-        loginText.perform(replaceText(invalidAuthData().getLogin()));
-        passwordText.perform(replaceText(invalidAuthData().getPass()));
+        authElement.getLoginText().perform(replaceText(invalidAuthData().getLogin()));
+        authElement.getPasswordText().perform(replaceText(invalidAuthData().getPass()));
     }
-
 
     public void authWithInvalidPass(Helper.User info) {
         Allure.step("Авторизация с невалидным паролем и валидным логином");
         checkAuthScreenElements();
-        loginText.perform(replaceText(invalidPassData().getLogin()));
-        passwordText.perform(replaceText(invalidPassData().getPass()));
+        authElement.getLoginText().perform(replaceText(invalidPassData().getLogin()));
+        authElement.getPasswordText().perform(replaceText(invalidPassData().getPass()));
     }
-
-
 
     public void clickSignInButton() {
         Allure.step("Нажать кнопку SignIn");
-        signInButton.perform(click());
+        authElement.getSignInButton().perform(click());
     }
 }

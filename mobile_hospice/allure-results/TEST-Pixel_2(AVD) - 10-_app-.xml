@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="ru.iteco.fmhandroid.ui.tests.AboutTest" tests="24" failures="1" errors="0" skipped="0" time="289.169" timestamp="2025-04-11T08:23:39" hostname="localhost">
+  <properties>
+    <property name="device" value="Pixel_2(AVD) - 10" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="checkScreenElementsOnAboutUs" classname="ru.iteco.fmhandroid.ui.tests.AboutTest" time="14.651" />
+  <testcase name="checkClickLinks" classname="ru.iteco.fmhandroid.ui.tests.AboutTest" time="12.632" />
+  <testcase name="returnToMainScreen" classname="ru.iteco.fmhandroid.ui.tests.AboutTest" time="13.136" />
+  <testcase name="loginWithInvalidData" classname="ru.iteco.fmhandroid.ui.tests.AuthTest" time="13.601" />
+  <testcase name="loginWithValidData" classname="ru.iteco.fmhandroid.ui.tests.AuthTest" time="10.919" />
+  <testcase name="authWithEmptyLoginAndPass" classname="ru.iteco.fmhandroid.ui.tests.AuthTest" time="6.469" />
+  <testcase name="authWithInvalidPassword" classname="ru.iteco.fmhandroid.ui.tests.AuthTest" time="6.313" />
+  <testcase name="checkAuthScreenElements" classname="ru.iteco.fmhandroid.ui.tests.AuthTest" time="6.25" />
+  <testcase name="checkOurMissionElements" classname="ru.iteco.fmhandroid.ui.tests.LoveQuotesTest" time="17.293" />
+  <testcase name="goToAllNews" classname="ru.iteco.fmhandroid.ui.tests.MainPaigeTest" time="10.227" />
+  <testcase name="menuNewsToAbout" classname="ru.iteco.fmhandroid.ui.tests.MainPaigeTest" time="23.258">
+    <failure>androidx.test.espresso.PerformException: Error performing 'wait for a specific view with attribute &lt;view.getId() is &lt;2131230736/ru.iteco.fmhandroid:id/about_company_info_label_text_view&gt;&gt; during 10000 ms.' on view 'view.getRootView() to equal view'.
+at androidx.test.espresso.PerformException$Builder.build(PerformException.java:1)
+at androidx.test.espresso.base.DefaultFailureHandler.getUserFriendlyError(DefaultFailureHandler.java:9)
+at androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:7)
+at androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:8)
+at androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:11)
+at androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:4)
+at ru.iteco.fmhandroid.ui.data.Helper.elementWaiting(Helper.java:277)
+at ru.iteco.fmhandroid.ui.steps.AboutStep.checkScreenElementsAboutUs(AboutStep.java:22)
+at ru.iteco.fmhandroid.ui.tests.MainPaigeTest.menuNewsToAbout(MainPaigeTest.java:57)
+... 34 trimmed
+Caused by: java.util.concurrent.TimeoutException
+at ru.iteco.fmhandroid.ui.data.Helper$4.perform(Helper.java:269)
+at androidx.test.espresso.ViewInteraction$SingleExecutionViewAction.perform(ViewInteraction.java:2)
+at androidx.test.espresso.ViewInteraction.doPerform(ViewInteraction.java:22)
+at androidx.test.espresso.ViewInteraction.access$100(ViewInteraction.java:1)
+at androidx.test.espresso.ViewInteraction$1.call(ViewInteraction.java:2)
+at androidx.test.espresso.ViewInteraction$1.call(ViewInteraction.java:1)
+at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+at android.os.Handler.handleCallback(Handler.java:883)
+at android.os.Handler.dispatchMessage(Handler.java:100)
+at android.os.Looper.loop(Looper.java:214)
+at android.app.ActivityThread.main(ActivityThread.java:7356)
+at java.lang.reflect.Method.invoke(Native Method)
+at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:492)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:930)</failure>
+  </testcase>
+  <testcase name="menuElementsVisibility" classname="ru.iteco.fmhandroid.ui.tests.MainPaigeTest" time="9.774" />
+  <testcase name="checkNews" classname="ru.iteco.fmhandroid.ui.tests.MainPaigeTest" time="12.651" />
+  <testcase name="checkNewsBlock" classname="ru.iteco.fmhandroid.ui.tests.MainPaigeTest" time="9.653" />
+  <testcase name="createNewsWithEmptyFields" classname="ru.iteco.fmhandroid.ui.tests.NewsTest" time="10.945" />
+  <testcase name="clickControlPanel" classname="ru.iteco.fmhandroid.ui.tests.NewsTest" time="10.452" />
+  <testcase name="createNewsWithEmptyDescription" classname="ru.iteco.fmhandroid.ui.tests.NewsTest" time="12.55" />
+  <testcase name="cancelCreateNews" classname="ru.iteco.fmhandroid.ui.tests.NewsTest" time="12.301" />
+  <testcase name="newsScreenElements" classname="ru.iteco.fmhandroid.ui.tests.NewsTest" time="9.737" />
+  <testcase name="checkFilterOfActive" classname="ru.iteco.fmhandroid.ui.tests.NewsTest" time="14.546" />
+  <testcase name="createNews" classname="ru.iteco.fmhandroid.ui.tests.NewsTest" time="11.359" />
+  <testcase name="sortingNews" classname="ru.iteco.fmhandroid.ui.tests.NewsTest" time="10.559" />
+  <testcase name="editNews" classname="ru.iteco.fmhandroid.ui.tests.NewsTest" time="17.119" />
+  <testcase name="noNewsToShow" classname="ru.iteco.fmhandroid.ui.tests.NewsTest" time="10.998" />
+</testsuite>

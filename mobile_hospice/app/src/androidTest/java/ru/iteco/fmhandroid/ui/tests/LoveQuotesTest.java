@@ -27,18 +27,15 @@ import ru.iteco.fmhandroid.ui.steps.SplashStep;
 @RunWith(AllureAndroidJUnit4.class)
 public class LoveQuotesTest {
 
-    AuthStep authStep = new AuthStep();
-    LoveStep loveStep = new LoveStep();
-    MainSteps mainSteps = new MainSteps();
-    SplashStep splashStep = new SplashStep();
-    Data data = new Data();
-    LoveElement loveElement = new LoveElement();
-
+    private final AuthStep authStep = new AuthStep();
+    private final MainSteps mainSteps = new MainSteps();
+    private final LoveStep loveStep = new LoveStep();
+    private final SplashStep splashStep = new SplashStep();
+    private final LoveElement loveElement = new LoveElement();
 
     @Rule
     public ActivityScenarioRule<AppActivity> activityRule =
             new ActivityScenarioRule<>(AppActivity.class);
-
 
     @Before
     public void logoutCheck() {
@@ -50,17 +47,14 @@ public class LoveQuotesTest {
             authStep.clickSignInButton();
         } finally {
             mainSteps.loadMainScreen();
-            mainSteps.clickOurMissionButton();
         }
     }
 
-
     @Test
-    @DisplayName("Экран цитат")
-    public void ourMissionScreenElements() {
-
+    @DisplayName("Проверка элементов экрана Our Mission")
+    public void checkOurMissionElements() {
+        mainSteps.clickOurMissionButton();
         loveStep.checkOurMissionElements();
     }
-
 }
 

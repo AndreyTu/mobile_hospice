@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import static org.junit.Assert.*;
 
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
@@ -23,7 +24,7 @@ import ru.iteco.fmhandroid.ui.steps.MainSteps;
 import ru.iteco.fmhandroid.ui.steps.SplashStep;
 
 
-@RunWith(AllureAndroidJUnit4.class)
+@RunWith(AndroidJUnit4.class)
 public class AuthTest {
 
     AuthStep authStep = new AuthStep();
@@ -83,7 +84,7 @@ public class AuthTest {
         generalSteps.checkEmptyAuthDataToast();
     }
 
-        @Test
+    @Test
     @DisplayName("Отображение элементов на странице авторизации")
     public void checkAuthScreenElements(){
         authStep.checkAuthScreenElements();

@@ -1,6 +1,5 @@
 package ru.iteco.fmhandroid.ui.steps;
 
-
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -13,23 +12,13 @@ import static org.hamcrest.CoreMatchers.not;
 import static ru.iteco.fmhandroid.ui.data.Helper.elementWaiting;
 import static ru.iteco.fmhandroid.ui.data.Helper.waitForElement;
 import static ru.iteco.fmhandroid.ui.data.Helper.withIndex;
-import static ru.iteco.fmhandroid.ui.screenElement.MainElement.aboutText;
-import static ru.iteco.fmhandroid.ui.screenElement.MainElement.allNews;
-import static ru.iteco.fmhandroid.ui.screenElement.MainElement.allNewsButton;
-import static ru.iteco.fmhandroid.ui.screenElement.MainElement.childNews;
-import static ru.iteco.fmhandroid.ui.screenElement.MainElement.getNewsDescriptionText;
-import static ru.iteco.fmhandroid.ui.screenElement.MainElement.logoutButton;
-import static ru.iteco.fmhandroid.ui.screenElement.MainElement.logoutText;
-import static ru.iteco.fmhandroid.ui.screenElement.MainElement.mainText;
-import static ru.iteco.fmhandroid.ui.screenElement.MainElement.menuButton;
-import static ru.iteco.fmhandroid.ui.screenElement.MainElement.missionButton;
-import static ru.iteco.fmhandroid.ui.screenElement.MainElement.newsBlockButton;
-import static ru.iteco.fmhandroid.ui.screenElement.MainElement.newsText;
 
 import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.ui.data.Helper;
+import ru.iteco.fmhandroid.ui.screenElement.MainElement;
 
 public class MainSteps {
+    private final MainElement mainElement = new MainElement();
 
     public void loadMainScreen(){
         Allure.step("Загрузка основной страницы");
@@ -38,86 +27,88 @@ public class MainSteps {
 
     public void checkMainElements(){
         Allure.step("Проверка элементов Основного экрана");
-        allNews.check(matches(isDisplayed()));
+        mainElement.getAllNews().check(matches(isDisplayed()));
     }
 
     public void checkAllNews(){
         Allure.step("Развернуть/свернуть блок новостей");
-        newsBlockButton.check(matches(isDisplayed()));
-        newsBlockButton.perform(click());
+        mainElement.getNewsBlockButton().check(matches(isDisplayed()));
+        mainElement.getNewsBlockButton().perform(click());
     }
 
     public void allNewsAreDisplayed(){
         Allure.step("Блок новостей развернут");
-        allNewsButton.check(matches(isDisplayed()));
+        mainElement.getAllNewsButton().check(matches(isDisplayed()));
     }
+
     public void allNewsNotDisplayed(){
         Allure.step("Блок новостей свернут");
-        allNewsButton.check(matches(not(isDisplayed())));
+        mainElement.getAllNewsButton().check(matches(not(isDisplayed())));
     }
 
     public void checkNews(int position){
         Allure.step("Развернуть новость");
-        childNews.perform(actionOnItemAtPosition(position, click()));
+        mainElement.getChildNews().perform(actionOnItemAtPosition(position, click()));
     }
-    public void descriptionDisplayed( int position){
+
+    public void descriptionDisplayed(int position){
         Allure.step("Отображение описания новости");
-        String descriptionText = Helper.Text.getText(onView(withIndex(getNewsDescriptionText(),position)));
+        String descriptionText = Helper.Text.getText(onView(withIndex(mainElement.getNewsDescriptionText(), position)));
         onView(allOf(withText(descriptionText), isDisplayed())).check(matches(isDisplayed()));
     }
 
     public void clickAllNewsButton(){
         Allure.step("Нажать на Все Новости");
-        allNewsButton.check(matches(isDisplayed()));
-        allNewsButton.perform(click());
+        mainElement.getAllNewsButton().check(matches(isDisplayed()));
+        mainElement.getAllNewsButton().perform(click());
     }
 
     public void clickOurMissionButton(){
         Allure.step("Нажать на Наша миссия");
-        missionButton.check(matches(isDisplayed()));
-        missionButton.perform(click());
+        mainElement.getMissionButton().check(matches(isDisplayed()));
+        mainElement.getMissionButton().perform(click());
     }
 
     public void clickLogoutButton(){
         Allure.step("Нажать на Выйти");
-        logoutButton.check(matches(isDisplayed()));
-        logoutButton.perform(click());
+        mainElement.getLogoutButton().check(matches(isDisplayed()));
+        mainElement.getLogoutButton().perform(click());
         onView(isRoot()).perform(waitForElement(withText("Log out"), 5000));
-        logoutText.check(matches(isDisplayed()));
-        logoutText.perform(click());
+        mainElement.getLogoutText().check(matches(isDisplayed()));
+        mainElement.getLogoutText().perform(click());
     }
 
     public void clickMenuButton(){
         Allure.step("Нажать на меню");
-        menuButton.check(matches(isDisplayed()));
-        menuButton.perform(click());
+        mainElement.getMenuButton().check(matches(isDisplayed()));
+        mainElement.getMenuButton().perform(click());
     }
 
     public void checkMenuList(){
         Allure.step("Проверка списка меню");
-        mainText.check(matches(isDisplayed()));
-        newsText.check(matches(isDisplayed()));
-        aboutText.check(matches(isDisplayed()));
+        mainElement.getMainText().check(matches(isDisplayed()));
+        mainElement.getNewsText().check(matches(isDisplayed()));
+        mainElement.getAboutText().check(matches(isDisplayed()));
     }
 
     public void clickOnNews(){
         Allure.step("Нажать на кнопку новости в меню");
-        menuButton.perform(click());
-        newsText.check(matches(isDisplayed()));
-        newsText.perform(click());
+        mainElement.getMenuButton().perform(click());
+        mainElement.getNewsText().check(matches(isDisplayed()));
+        mainElement.getNewsText().perform(click());
     }
 
     public void clickOnAboutUs(){
         Allure.step("Нажать на кнопку О нас в меню");
-        menuButton.perform(click());
-        aboutText.check(matches(isDisplayed()));
-        aboutText.perform(click());
+        mainElement.getMenuButton().perform(click());
+        mainElement.getAboutText().check(matches(isDisplayed()));
+        mainElement.getAboutText().perform(click());
     }
 
     public void clickOnMain(){
         Allure.step("Нажать на кнопку Главная в меню");
-        menuButton.perform(click());
-        mainText.check(matches(isDisplayed()));
-        mainText.perform(click());
+        mainElement.getMenuButton().perform(click());
+        mainElement.getMainText().check(matches(isDisplayed()));
+        mainElement.getMainText().perform(click());
     }
 }
